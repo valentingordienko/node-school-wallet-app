@@ -2,23 +2,57 @@
   "name": "node-school-wallet-app",
   "version": "1.0.0",
   "description": "Приложение школы Node.js «Кошелёк»",
-  "author": "",
+  "author": "Valentin Gordienko",
   "scripts": {
-    "start": "nodemon index.js",
+    "build": "webpack",
+    "start": "NODE_PATH=. node ./source/server/app.js",
+    "inspect": "NODE_PATH=. node --inspect ./source/server/app.js",
+    "watch": "NODE_PATH=. nodemon --watch source  ./source/server/app.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
-    "url": "ssh://git@github.com:rakchaev/node-school-app.git"
+    "url": "https://github.com/valentingordienko/node-school-wallet-app"
   },
   "license": "ISC",
   "engines": {
     "node": "^8.2"
   },
   "dependencies": {
-    "body-parser": "^1.18.1",
-    "eslint": "^4.7.2",
-    "express": "^4.15.3",
-    "luhn": "^2.1.0"
+    "koa": "^2.3.0",
+    "koa-bodyparser": "^4.2.0",
+    "koa-router": "^7.2.1",
+    "koa-static": "^4.0.1",
+    "lodash": "^4.17.4",
+    "log4js": "^2.3.4",
+    "prop-types": "^15.5.10",
+    "react": "^16.0.0",
+    "react-dom": "^16.0.0",
+    "serialize-javascript": "^1.4.0"
+  },
+  "devDependencies": {
+    "antd": "^2.12.8",
+    "babel-core": "^6.26.0",
+    "babel-loader": "^7.1.2",
+    "babel-plugin-emotion": "^7.1.0",
+    "babel-plugin-import": "^1.4.0",
+    "babel-preset-env": "^1.6.0",
+    "babel-preset-es2015": "^6.24.1",
+    "babel-preset-react": "^6.24.1",
+    "card-info": "git+https://github.com/iniel/card-info.git",
+    "css-loader": "^0.28.7",
+    "emotion": "^7.2.0",
+    "emotion-server": "^8.0.3",
+    "eslint": "^4.8.0",
+    "eslint-plugin-import": "^2.7.0",
+    "eslint-plugin-jsx-a11y": "^5.1.1",
+    "eslint-plugin-react": "^7.3.0",
+    "extract-text-webpack-plugin": "^3.0.1",
+    "ignore-loader": "^0.1.2",
+    "moment": "^2.18.1",
+    "react-emotion": "^7.2.0",
+    "style-loader": "^0.19.0",
+    "url-loader": "^0.5.9",
+    "webpack": "^3.5.5"
   }
 }

@@ -1,4 +1,4 @@
-build/
+public/client/bundle.js
 node_modules/
 .DS_Store
 Thumbs.db
@@ -6,3 +6,4 @@ Thumbs.db
 *.sublime*
 *.log
 npm-debug.log*
+package-lock.json
