@@ -4694,7 +4694,7 @@ exports.default = Header;
 
 
 Object.defineProperty(exports, "__esModule", {
-	value: true
+				value: true
 });
 
 var _react = __webpack_require__(0);
@@ -4707,33 +4707,45 @@ var _react4 = _interopRequireDefault(_react3);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-var User = /*#__PURE__*/(0, _react4.default)('div', 'css-User-1c73je40', [], [], function createEmotionStyledRules() {
-	return {
-		'display': '-webkit-box; display: -ms-flexbox; display: flex',
-		'WebkitBoxAlign': 'center',
-		'msFlexAlign': 'center',
-		'alignItems': 'center',
-		'fontSize': '15px',
-		'color': '#000'
-	};
+var User = /*#__PURE__*/(0, _react4.default)('div', 'css-User-pxfjvw0', [], [], function createEmotionStyledRules() {
+				return {
+								'display': '-webkit-box; display: -ms-flexbox; display: flex',
+								'WebkitBoxAlign': 'center',
+								'msFlexAlign': 'center',
+								'alignItems': 'center',
+								'fontSize': '15px',
+								'color': '#000'
+				};
 });
 
-var Avatar = /*#__PURE__*/(0, _react4.default)('img', 'css-Avatar-1c73je41', [], [], function createEmotionStyledRules() {
-	return {
-		'width': '42px',
-		'height': '42px',
-		'borderRadius': '50%',
-		'marginRight': '10px'
-	};
+var AvatarContainer = /*#__PURE__*/(0, _react4.default)('div', 'css-AvatarContainer-pxfjvw1', [], [], function createEmotionStyledRules() {
+				return {
+								'width': '42px',
+								'height': '42px',
+								'borderRadius': '50%',
+								'marginRight': '10px',
+								'overflow': 'hidden'
+				};
+});
+
+var Avatar = /*#__PURE__*/(0, _react4.default)('img', 'css-Avatar-pxfjvw2', [], [], function createEmotionStyledRules() {
+				return {
+								'width': '100%',
+								'marginTop': '-3px'
+				};
 });
 
 exports.default = function () {
-	return _react2.default.createElement(
-		User,
-		null,
-		_react2.default.createElement(Avatar, { src: '/assets/avatar.png' }),
-		'Samuel Johnson'
-	);
+				return _react2.default.createElement(
+								User,
+								null,
+								_react2.default.createElement(
+												AvatarContainer,
+												null,
+												_react2.default.createElement(Avatar, { src: '/assets/valentin-gordienko-avatar.jpg' })
+								),
+								'Valentin Gordienko'
+				);
 };
 
 /***/ }),

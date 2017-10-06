@@ -8,16 +8,24 @@ const User = styled.div`
 	color: #000;
 `;
 
-const Avatar = styled.img`
-	width: 42px;
+const AvatarContainer = styled.div`
+    width: 42px;
 	height: 42px;
 	border-radius: 50%;
 	margin-right: 10px;
+	overflow: hidden;
+`;
+
+const Avatar = styled.img`
+	width: 100%;
+	margin-top: -3px;
 `;
 
 export default () => (
-	<User>
-		<Avatar src="/assets/avatar.png" />
-		Samuel Johnson
-	</User>
+    <User>
+        <AvatarContainer>
+            <Avatar src="/assets/valentin-gordienko-avatar.jpg"/>
+        </AvatarContainer>
+        Valentin Gordienko
+    </User>
 );
