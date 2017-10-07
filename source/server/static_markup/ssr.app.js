@@ -952,7 +952,7 @@ module.exports = function (appData) {
 		_react2.default.createElement(
 			'head',
 			null,
-			_react2.default.createElement('meta', { charset: 'utf-8' }),
+			_react2.default.createElement('meta', { charSet: 'utf-8' }),
 			_react2.default.createElement(
 				'title',
 				null,

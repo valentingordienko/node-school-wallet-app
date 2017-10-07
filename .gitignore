@@ -7,3 +7,5 @@ Thumbs.db
 *.log
 npm-debug.log*
 package-lock.json
+public/app.js
+source/server/static_markup/*.js

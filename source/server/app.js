@@ -1,7 +1,6 @@
 'use strict';
 
 const path = require('path');
-const fs = require('fs');
 const koa = require('koa');
 const serve = require('koa-static');
 const router = require('koa-router')();
@@ -26,15 +25,13 @@ const app = new koa();
 
 const DATA = {
     user: {
-        login: 'samuel_johnson',
-        name: 'Samuel Johnson'
+        login: 'valentin_gordienko',
+        name: 'Valentin Gordienko'
     }
 };
 
 function getView(viewId) {
-    // const viewPath = path.resolve(`ssr.${viewId}.js`);
     const viewPath = path.resolve('source', 'server', 'static_markup', `ssr.${viewId}.js`);
-    console.log(viewPath);
     return require(viewPath);
 }
 

@@ -13,7 +13,7 @@ module.exports = (appData) => {
 	return (
 		<html>
 			<head>
-				<meta charset='utf-8' />
+				<meta charSet='utf-8' />
 				<title>Node School App</title>
 				<link rel='shortcut icon' href='/favicon.ico' />
 				<link rel='stylesheet' href='/main.css' />
