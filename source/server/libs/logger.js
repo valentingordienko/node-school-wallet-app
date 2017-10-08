@@ -7,7 +7,9 @@ const filename = path.resolve(__dirname, '..', 'logs', 'app.log');
 
 const config = {
     appenders: {
-        out: {type: 'stdout'},
+        out: {
+            type: 'stdout'
+        },
         app: {
             type: 'file',
             filename,

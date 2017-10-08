@@ -21,11 +21,12 @@ const Avatar = styled.img`
 	margin-top: -3px;
 `;
 
-export default () => (
+export default ({user}) => (
+
     <User>
         <AvatarContainer>
             <Avatar src="/assets/valentin-gordienko-avatar.jpg"/>
         </AvatarContainer>
-        Valentin Gordienko
+        {user.name}
     </User>
 );

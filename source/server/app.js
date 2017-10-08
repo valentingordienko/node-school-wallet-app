@@ -1,50 +1,49 @@
 'use strict';
 
-const path = require('path');
+/**
+ * Подключение сторонних модулей
+ */
 const koa = require('koa');
 const serve = require('koa-static');
 const router = require('koa-router')();
 const bodyParser = require('koa-bodyparser')();
-
-const {renderToStaticMarkup} = require('react-dom/server');
 const logger = require('./libs/logger.js')('wallet-app');
 
+
+/**
+ * Подключение модулей приложения
+ */
+const ApplicationError = require('./libs/application-error');
+const CardsModel = require('./models/cards');
+const TransactionsModel = require('./models/transactions');
+
+
+/**
+ * Подключение контроллеров приложения
+ */
+const errorController = require('./controllers/error');
+const rootController = require('./controllers/root');
 const getCardsController = require('./controllers/cards/get-cards');
 const createCardController = require('./controllers/cards/create');
 const deleteCardController = require('./controllers/cards/delete');
 const getTransactionsController = require('./controllers/transactions/get');
 const createTransactionsController = require('./controllers/transactions/create');
 
-const errorController = require('./controllers/error');
 
-const ApplicationError = require('./libs/application-error');
-const CardsModel = require('./models/cards');
-const TransactionsModel = require('./models/transactions');
-
+/**
+ * Создание экземпляра приложения
+ */
 const app = new koa();
-
-const DATA = {
-    user: {
-        login: 'valentin_gordienko',
-        name: 'Valentin Gordienko'
-    }
-};
-
-function getView(viewId) {
-    const viewPath = path.resolve('source', 'server', 'static_markup', `ssr.${viewId}.js`);
-    return require(viewPath);
-}
 
 
 // Сохраним параметр id в ctx.params.id
 router.param('id', (id, ctx, next) => next());
 
 
-router.get('/', (ctx) => {
-    const indexView = getView('app');
-
-    ctx.body = renderToStaticMarkup(indexView(DATA));
-});
+/**
+ * Описание роутинга приложения
+ */
+router.get('/', rootController);
 
 router.get('/cards/', getCardsController);
 router.post('/cards/', createCardController);
@@ -55,24 +54,33 @@ router.post('/cards/:id/transactions/', createTransactionsController);
 
 router.all('/error', errorController);
 
-// logger
+
 app.use(async (ctx, next) => {
     const start = new Date();
     await next();
     const ms = new Date() - start;
-    console.log(`${ctx.method} ${ctx.url} - ${ms}ms`);
+    logger.log('info', `${ctx.method} ${ctx.url} - ${ms}ms`);
 });
 
 // error handler
 app.use(async (ctx, next) => {
     try {
+
         await next();
+
     } catch (err) {
-        console.log('Error detected', err);
+
+        logger.log('error', err);
+
+        /**
+         * Если ошибка это ошибка уровня приложения то выставляем её стату, иначе это ошибка уровня сервера
+         */
         ctx.status = err instanceof ApplicationError ? err.status : 500;
+
         ctx.body = `Error [${err.message}] :(`;
     }
 });
+
 
 // Создадим модель Cards и Transactions на уровне приложения и проинициализируем ее
 app.use(async (ctx, next) => {
@@ -89,9 +97,19 @@ app.use(async (ctx, next) => {
 
 
 app.use(bodyParser);
-app.use(router.routes());
 app.use(serve('./public'));
+app.use(router.routes());
+app.use(router.allowedMethods());
 
+app.on('error', (err, ctx) => {
+
+    log.error('server error', err, ctx)
+});
+
+
+/**
+ * Запуск приложения на 4000 порту
+ */
 app.listen(4000, () => {
     logger.log('info', 'Application started');
 });
