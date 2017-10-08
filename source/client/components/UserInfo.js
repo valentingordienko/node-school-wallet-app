@@ -25,7 +25,7 @@ export default ({user}) => (
 
     <User>
         <AvatarContainer>
-            <Avatar src="/assets/valentin-gordienko-avatar.jpg"/>
+            <Avatar src={user.avatarUrl}/>
         </AvatarContainer>
         {user.name}
     </User>

@@ -13,7 +13,13 @@ const DATA = {
     user: {
         login: 'valentin_gordienko',
         name: 'Valentin Gordienko',
-    }
+        avatarUrl: '/assets/valentin-gordienko-avatar.jpg',
+    },
+    /*user: {
+        login: '',
+        name: 'Incognito',
+        avatarUrl: '/assets/avatar.png',
+    }*/
 };
 
 module.exports = async (ctx) => {
